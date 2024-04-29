@@ -1,18 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- Book Picture -->
+    <ImageView
+        android:id="@+id/book_picture"
+        android:layout_width="239dp"
+        android:layout_height="415dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/placeholder_book_image" /> <!-- You can replace placeholder_book_image with the actual image resource -->
+
+    <!-- Title -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="16dp"
+        android:text="The Da Vinci Code"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold" /> <!--replace with actual book title-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Author -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1" >
+        <TextView
+            android:id="@+id/textViewAuthorLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Author:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/textViewAuthor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Dan Brown" />
+    </LinearLayout>
+
+    <!-- Genres -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1" >
+        <TextView
+            android:id="@+id/textViewGenresLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Genres:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/textViewGenres"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Thriller" />
+    </LinearLayout>
+
+    <!-- Description -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="1" >
+        <TextView
+            android:id="@+id/textViewDescriptionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Description:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="While in Paris, Harvard symbologist Robert Langdon is awakened by a phone call in the dead of the night. The elderly curator of the Louvre has been murdered inside the museum, his body covered in baffling symbols. As Langdon and gifted French cryptologist Sophie Neveu sort through the bizarre riddles, they are stunned to discover a trail of clues hidden in the works of Leonardo da Vinci—clues visible for all to see and yet ingeniously disguised by the painter." />
+    </LinearLayout>
+
+</LinearLayout>
