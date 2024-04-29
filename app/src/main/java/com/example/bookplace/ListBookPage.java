@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,15 +18,14 @@ public class ListBookPage extends AppCompatActivity {
         setContentView(R.layout.list_book_page);
 
         Button buttonSearch = findViewById(R.id.buttonSearch);
-        ImageView imageViewSmallThumbnail = findViewById(R.id.imageViewSmallThumbnail);
-        String smallThumbnailUrl = "https://books.google.com/books/content?id=JHEkAQAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api";
-        Glide.with(this).load(smallThumbnailUrl).into(imageViewSmallThumbnail);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GoogleBooksApi googleBooksApi = new GoogleBooksApi();
                 googleBooksApi.getData(getApplicationContext(), "Beautiful Creatures");
+
+                //RecylerView recyclerViewBooks = findViewById(R.id.recyclerViewBooks);
             }
         });
     }
