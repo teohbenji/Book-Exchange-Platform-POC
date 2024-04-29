@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListBookPage"/>
+        <activity android:name=".ViewBookPage"/>
     </application>
 
 </manifest>

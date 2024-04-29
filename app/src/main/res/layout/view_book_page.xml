@@ -7,14 +7,13 @@
 
     <!-- Book Picture -->
     <ImageView
-        android:id="@+id/book_picture"
+        android:id="@+id/imageViewThumbnail"
         android:layout_width="239dp"
         android:layout_height="415dp"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/placeholder_book_image" /> <!-- You can replace placeholder_book_image with the actual image resource -->
+        android:scaleType="fitCenter" /> <!-- You can replace placeholder_book_image with the actual image resource -->
 
     <!-- Title -->
     <TextView
@@ -45,8 +44,7 @@
             android:id="@+id/textViewAuthor"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Dan Brown" />
+            android:layout_weight="0.5" />
     </LinearLayout>
 
     <!-- Published -->
@@ -67,8 +65,7 @@
             android:id="@+id/textViewPublished"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="28 March 2006" />
+            android:layout_weight="0.5"/>
     </LinearLayout>
 
     <!-- Description -->
@@ -89,8 +86,7 @@
             android:id="@+id/textViewDescription"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="While in Paris, Harvard symbologist Robert Langdon is awakened by a phone call in the dead of the night. The elderly curator of the Louvre has been murdered inside the museum, his body covered in baffling symbols. As Langdon and gifted French cryptologist Sophie Neveu sort through the bizarre riddles, they are stunned to discover a trail of clues hidden in the works of Leonardo da Vinci—clues visible for all to see and yet ingeniously disguised by the painter." />
+            android:layout_weight="0.5"/>
         <Button
             android:id="@+id/buttonGetData"
             android:layout_width="wrap_content"

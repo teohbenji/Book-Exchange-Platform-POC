@@ -18,10 +18,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private final Context context;
     private final ArrayList<Book> bookList;
 
+    private BookClickListener clickListener;
+
     // Constructor
-    public BookAdapter(Context context, ArrayList<Book> bookList) {
+    public BookAdapter(Context context, ArrayList<Book> bookList, BookClickListener clickListener) {
         this.context = context;
         this.bookList = bookList;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -39,6 +42,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.textViewBookName.setText(book.getTitle());
         holder.textViewAuthorNames.setText(book.getAuthors());
         Glide.with(context).load(book.getSmallThumbnail()).into(holder.imageViewSmallThumbnail);
+
+        //Set onclickListener for each item
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clickListener != null) {
+                    clickListener.onBookClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -48,17 +61,41 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     // ViewHolder class for initializing views such as TextView and ImageView
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final ImageView imageViewSmallThumbnail;
         private final TextView textViewBookName;
         private final TextView textViewAuthorNames;
+
+        private BookClickListener clickListener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewSmallThumbnail = itemView.findViewById(R.id.imageViewSmallThumbnail);
             textViewBookName = itemView.findViewById(R.id.textViewBookName);
             textViewAuthorNames = itemView.findViewById(R.id.textViewAuthorNames);
+
+            // Set the click listener for the entire item view
+            itemView.setOnClickListener(this);
+
+            this.clickListener = clickListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            // Handle click event
+            if (clickListener != null) {
+                // Pass the clicked book to the listener
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    clickListener.onBookClick(position);
+                }
+            }
         }
     }
+
+    public interface BookClickListener {
+        void onBookClick(int position);
+    }
+
 }
 

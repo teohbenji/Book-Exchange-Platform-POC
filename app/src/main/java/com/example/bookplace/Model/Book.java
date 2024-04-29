@@ -1,6 +1,9 @@
 package com.example.bookplace.Model;
 
-public class Book {
+import java.io.Serializable;
+
+//Serializable in Java means it can be converted to and fro a byte stream
+public class Book implements Serializable {
     private String title;
     private String authors;
     private String publishedDate;
