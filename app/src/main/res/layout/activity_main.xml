@@ -2,102 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Book Picture -->
-    <ImageView
-        android:id="@+id/book_picture"
-        android:layout_width="239dp"
-        android:layout_height="415dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/placeholder_book_image" /> <!-- You can replace placeholder_book_image with the actual image resource -->
-
-    <!-- Title -->
+    <!-- Message -->
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="The Da Vinci Code"
+        android:text="Hello name, what would you like to do?"
         android:textSize="30sp"
         android:gravity="center"
-        android:textStyle="bold" /> <!--replace with actual book title-->
+        android:textStyle="bold" />
 
-    <!-- Author -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:weightSum="1" >
-        <TextView
-            android:id="@+id/textViewAuthorLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Author:"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/textViewAuthor"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Dan Brown" />
-    </LinearLayout>
+        android:layout_marginTop="100dp"
+        android:gravity="center">
 
-    <!-- Published -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:weightSum="1" >
-        <TextView
-            android:id="@+id/textViewPublishedLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Published:"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/textViewPublished"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="28 March 2006" />
-    </LinearLayout>
-
-    <!-- Description -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:weightSum="1" >
-        <TextView
-            android:id="@+id/textViewDescriptionLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Description:"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="While in Paris, Harvard symbologist Robert Langdon is awakened by a phone call in the dead of the night. The elderly curator of the Louvre has been murdered inside the museum, his body covered in baffling symbols. As Langdon and gifted French cryptologist Sophie Neveu sort through the bizarre riddles, they are stunned to discover a trail of clues hidden in the works of Leonardo da Vinci—clues visible for all to see and yet ingeniously disguised by the painter." />
+        <!-- Button 1 -->
         <Button
-            android:id="@+id/buttonGetData"
+            android:id="@+id/buttonListABook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Data"
-            android:layout_centerInParent="true" />
+            android:text="List a book"
+            android:textSize="24sp"
+            android:gravity="center" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:gravity="center">
+
+        <!-- Button 2 -->
+        <Button
+            android:id="@+id/buttonBrowseBooks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browse Books"
+            android:textSize="24sp"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

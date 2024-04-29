@@ -7,11 +7,11 @@ import android.widget.Button;
 
 import com.example.bookplace.Model.GoogleBooksApi;
 
-public class AddBookPage extends AppCompatActivity {
+public class ViewBookPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.view_book_page);
 
         Button buttonGetData = findViewById(R.id.buttonGetData);
 
