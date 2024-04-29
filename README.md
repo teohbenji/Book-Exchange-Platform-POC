@@ -1,5 +1,5 @@
 
-# Book Place - Book Exchange Platform
+# Book Place - Book Exchange Platform Android App
 
 The advent of technology comes with the steady decline in reading. As a reasult, many people have stacks of books which they do not need anymore. Donation or selling of books may not always result in the book ending up in suitable hands (adapted from heymax.ai POC). With Book Place, you can now list your unwanted books, and search for another person to exchange your books with.
 
