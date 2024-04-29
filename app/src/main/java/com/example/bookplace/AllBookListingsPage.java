@@ -1,6 +1,7 @@
 package com.example.bookplace;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +19,6 @@ public class AllBookListingsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_book_listings);
 
-        TextView textViewAllBookListings = findViewById(R.id.textViewAllBookListings);
         Button buttonSearch = findViewById(R.id.buttonSearch);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +36,7 @@ public class AllBookListingsPage extends AppCompatActivity {
                 }
 
                 // Update textViewAllBookListings with the names of all books
-                textViewAllBookListings.setText(stringBuilder.toString());
+                Log.d("AllBookListingsPage",  "List of books: " + stringBuilder.toString());
             }
         });
     }

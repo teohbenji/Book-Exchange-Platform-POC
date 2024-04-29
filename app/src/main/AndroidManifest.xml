@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".ListBookPage"/>
         <activity android:name=".ViewBookPage"/>
+        <activity android:name=".AllBookListingsPage"/>
     </application>
 
 </manifest>

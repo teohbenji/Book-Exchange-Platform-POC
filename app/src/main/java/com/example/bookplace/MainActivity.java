@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonListABook = findViewById(R.id.buttonListABook);
+        Button buttonBrowseBooks = findViewById(R.id.buttonBrowseBooks);
 
         buttonListABook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,5 +25,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonBrowseBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AllBookListingsPage.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
