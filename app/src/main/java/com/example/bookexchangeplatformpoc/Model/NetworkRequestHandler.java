@@ -1,4 +1,4 @@
-package com.example.bookexchangeplatformpoc;
+package com.example.bookexchangeplatformpoc.Model;
 
 import android.content.Context;
 

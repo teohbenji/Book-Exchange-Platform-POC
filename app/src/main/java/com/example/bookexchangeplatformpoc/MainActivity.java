@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bookexchangeplatformpoc.Model.GoogleBooksApi;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,12 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonGetData = findViewById(R.id.buttonGetData);
 
-        // Set OnClickListener for the button
         buttonGetData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GoogleBooksApi googleBooksApi = new GoogleBooksApi();
-                googleBooksApi.getData(getApplicationContext()); // Pass the application context
+                googleBooksApi.getData(getApplicationContext(), "Da Vinci code");
             }
         });
     }

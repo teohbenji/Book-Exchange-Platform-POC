@@ -71,28 +71,6 @@
             android:text="28 March 2006" />
     </LinearLayout>
 
-    <!-- Genres -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:weightSum="1" >
-        <TextView
-            android:id="@+id/textViewGenresLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Genres:"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/textViewGenres"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Thriller" />
-    </LinearLayout>
-
     <!-- Description -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
