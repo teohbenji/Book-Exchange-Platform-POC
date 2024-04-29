@@ -25,13 +25,20 @@ public class ViewBookPage extends AppCompatActivity {
         // Receive the Book object from the intent
         Intent intent = getIntent();
         Book book = (Book) intent.getSerializableExtra("clicked_book");
+        boolean fromListPage = intent.getBooleanExtra("fromListPage", false); // Default value is false
+
+        // Hide the ListBook button if not coming from ListBookPage
+        Button buttonListBook = findViewById(R.id.buttonListBook);
+        if (!fromListPage) {
+            buttonListBook.setVisibility(View.GONE);
+        }
 
         ImageView imageViewThumbnail = findViewById(R.id.imageViewThumbnail);
         TextView textViewTitle = findViewById(R.id.textViewTitle);
         TextView textViewAuthor = findViewById(R.id.textViewAuthor);
         TextView textViewPublished = findViewById(R.id.textViewPublished);
         TextView textViewDescription = findViewById(R.id.textViewDescription);
-        Button buttonListBook = findViewById(R.id.buttonListBook);
+
 
         textViewTitle.setText(book.getTitle());
         textViewAuthor.setText(book.getAuthors());

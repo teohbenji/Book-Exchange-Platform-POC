@@ -69,6 +69,7 @@ public class ListBookPage extends AppCompatActivity implements GoogleBooksDataLi
 
     private void handleBookClick(Book clickedBook) {
         Intent intent = new Intent(ListBookPage.this, ViewBookPage.class);
+        intent.putExtra("fromListPage", true);
         intent.putExtra("clicked_book", clickedBook);
         startActivity(intent);
     }

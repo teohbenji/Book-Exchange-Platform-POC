@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Hello name, what would you like to do?"
+        android:text="Hello, what would you like to do?"
         android:textSize="30sp"
         android:gravity="center"
         android:textStyle="bold" />

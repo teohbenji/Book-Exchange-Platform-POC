@@ -60,6 +60,7 @@ public class AllBookListingsPage extends AppCompatActivity implements BookAdapte
 
     private void handleBookClick(Book clickedBook) {
         Intent intent = new Intent(AllBookListingsPage.this, ViewBookPage.class);
+        intent.putExtra("fromListPage", false);
         intent.putExtra("clicked_book", clickedBook);
         startActivity(intent);
     }
