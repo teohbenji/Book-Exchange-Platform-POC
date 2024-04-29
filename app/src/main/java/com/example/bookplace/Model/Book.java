@@ -2,7 +2,7 @@ package com.example.bookplace.Model;
 
 import java.io.Serializable;
 
-//Serializable in Java means it can be converted to and fro a byte stream
+//Serializable in Java means it can be converted to and fro a byte stream, mainly for Intent
 public class Book implements Serializable {
     private String title;
     private String authors;
