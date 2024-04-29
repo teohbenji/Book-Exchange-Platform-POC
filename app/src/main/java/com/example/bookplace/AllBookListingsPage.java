@@ -1,43 +1,66 @@
 package com.example.bookplace;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookplace.Model.Book;
+import com.example.bookplace.Model.BookConverter;
 import com.example.bookplace.Model.BookListing;
 import com.example.bookplace.Model.BookListingDB;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class AllBookListingsPage extends AppCompatActivity {
+public class AllBookListingsPage extends AppCompatActivity implements BookAdapter.BookClickListener{
+    private ArrayList<Book> bookArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_book_listings);
 
-        Button buttonSearch = findViewById(R.id.buttonSearch);
+        // Retrieve all book listings from the database
+        BookListingDB bookListingDB = new BookListingDB(AllBookListingsPage.this);
+        bookListingDB.open();
+        ArrayList<BookListing> allBookListings = bookListingDB.getAllBookListings();
+        bookListingDB.close();
 
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Retrieve all book listings from the database
-                BookListingDB dataSource = new BookListingDB(AllBookListingsPage.this);
-                dataSource.open();
-                List<BookListing> allBookListings = dataSource.getAllBookListings();
-                dataSource.close();
+        // Log retrieved book listings
+        StringBuilder stringBuilder = new StringBuilder();
+        for (BookListing bookListing : allBookListings) {
+            stringBuilder.append(bookListing.getTitle()).append("\n");
+        }
+        Log.d("AllBookListingsPage",  "List of books: " + stringBuilder.toString());
 
-                // Build a string containing names of all books
-                StringBuilder stringBuilder = new StringBuilder();
-                for (BookListing bookListing : allBookListings) {
-                    stringBuilder.append(bookListing.getTitle()).append("\n");
-                }
+        // Set up RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewBooks);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-                // Update textViewAllBookListings with the names of all books
-                Log.d("AllBookListingsPage",  "List of books: " + stringBuilder.toString());
-            }
-        });
+        //Convert BookListing objects to Books
+        ArrayList<Book> booksList = BookConverter.convertBookListingsToBooks((allBookListings));
+
+        //For onBookClick
+        bookArrayList = booksList;
+
+        // Create adapter and set it to RecyclerView
+        BookAdapter adapter = new BookAdapter(this, booksList, this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBookClick(int position) {
+        // Handle click events for individual books here
+        Book clickedBook = bookArrayList.get(position);
+        Log.d("ListBookPage", "onBookClick " + clickedBook.getTitle());
+        handleBookClick(clickedBook);
+    }
+
+    private void handleBookClick(Book clickedBook) {
+        Intent intent = new Intent(AllBookListingsPage.this, ViewBookPage.class);
+        intent.putExtra("clicked_book", clickedBook);
+        startActivity(intent);
     }
 }

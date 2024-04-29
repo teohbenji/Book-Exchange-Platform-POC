@@ -15,18 +15,6 @@
         android:textStyle="bold"
         android:gravity="center" />
 
-    <!-- Search Button -->
-    <Button
-        android:id="@+id/buttonSearch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#008000"
-        android:text="Search"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
-
     <!-- Recycler View-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBooks"

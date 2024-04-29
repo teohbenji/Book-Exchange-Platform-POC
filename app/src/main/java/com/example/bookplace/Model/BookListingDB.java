@@ -39,8 +39,8 @@ public class BookListingDB{
         return database.insert(BookListingSchema.BookListingEntry.TABLE_NAME, null, values);
     }
 
-    public List<BookListing> getAllBookListings() {
-        List<BookListing> bookListings = new ArrayList<>();
+    public ArrayList<BookListing> getAllBookListings() {
+        ArrayList<BookListing> bookListings = new ArrayList<>();
 
         Cursor cursor = database.query(
                 BookListingSchema.BookListingEntry.TABLE_NAME,
