@@ -1,5 +1,6 @@
 package com.example.bookplace;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         // Set data to TextView and ImageView of each card layout
         Book book = bookList.get(position);
         holder.textViewBookName.setText(book.getTitle());
