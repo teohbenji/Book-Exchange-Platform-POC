@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +22,17 @@ public class ListBookPage extends AppCompatActivity implements GoogleBooksDataLi
         setContentView(R.layout.list_book_page);
 
         Button buttonSearch = findViewById(R.id.buttonSearch);
+        EditText editTextTitle = findViewById(R.id.editTextTitle);
+        EditText editTextAuthor = findViewById(R.id.editTextAuthor);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Get data from GoogleBooksApi
                 GoogleBooksApi googleBooksApi = new GoogleBooksApi();
-                googleBooksApi.getGoogleBooksData(getApplicationContext(), "Harry Potter", ListBookPage.this);
+                String titleStr = editTextTitle.getText().toString();
+                String authorStr = editTextAuthor.getText().toString();
+                googleBooksApi.getGoogleBooksData(getApplicationContext(), titleStr, authorStr, ListBookPage.this);
             }
         });
     }

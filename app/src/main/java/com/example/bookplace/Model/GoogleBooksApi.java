@@ -17,11 +17,9 @@ public class GoogleBooksApi {
     private String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
     private String API_KEY = "AIzaSyBJDgOE6twnM9XnMYgpTpYbyMrZLidhNfI";
 
-   // public void getData(Context context, String title, String author, String publisher) {
-    public void getGoogleBooksData(Context context, String title, final GoogleBooksDataListener googleBooksDataListener) {
+    public void getGoogleBooksData(Context context, String titleStr, String authorStr, final GoogleBooksDataListener googleBooksDataListener) {
 
-        String searchTerms = "+intitle:" + title;
-        String url = baseUrl + searchTerms + "&key=" + API_KEY;
+        String url = baseUrl + buildSearchTerms(titleStr, authorStr) + "&key=" + API_KEY;
 
         mRequestHandler = new NetworkRequestHandler(context);
         mRequestHandler.makeStringRequest(url, new NetworkRequestHandler.NetworkRequestListener<String>() {
@@ -86,6 +84,22 @@ public class GoogleBooksApi {
             }
         }
         return bookArrayList;
+    }
+
+    public String buildSearchTerms(String titleStr, String authorStr){
+        StringBuilder searchTermsBuilder = new StringBuilder();
+
+        // Check if titleStr exists
+        if (titleStr != null && !titleStr.isEmpty()) {
+            searchTermsBuilder.append("+intitle:").append(titleStr.replace(" ", "%20"));
+        }
+
+        // Check if authorStr exists
+        if (authorStr != null && !authorStr.isEmpty()) {
+            searchTermsBuilder.append("+inauthor:").append(authorStr.replace(" ", "%20"));
+        }
+
+        return searchTermsBuilder.toString();
     }
 
 }
