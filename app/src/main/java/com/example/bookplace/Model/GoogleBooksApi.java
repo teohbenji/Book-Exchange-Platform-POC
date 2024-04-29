@@ -48,19 +48,37 @@ public class GoogleBooksApi {
             JsonArray itemsArray = jsonObject.getAsJsonArray("items");
             for (JsonElement itemElement : itemsArray) {
                 if (bookArrayList.size() >= 1) break; // Limit to top result
-                Book book = new Book();
+
                 JsonObject volumeInfo = itemElement.getAsJsonObject().getAsJsonObject("volumeInfo");
 
-                book.title = volumeInfo.get("title").getAsString();
-                book.authors = gson.fromJson(volumeInfo.getAsJsonArray("authors"), String[].class);
-                book.publishedDate = volumeInfo.get("publishedDate").getAsString();
-                book.description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "";
+                String[] authorsArr = gson.fromJson(volumeInfo.getAsJsonArray("authors"), String[].class);
+
+                StringBuilder authorsStrBuilder = new StringBuilder();
+
+                if (authorsArr != null) {
+                    for (int i = 0; i < authorsArr.length; i++) {
+                        authorsStrBuilder.append(authorsArr[i]);
+                        if (i < authorsArr.length - 1) {
+                            authorsStrBuilder.append(", ");
+                        }
+                    }
+                }
+                String authorsStr = authorsStrBuilder.toString();
+                String titleStr = volumeInfo.get("title").getAsString();
+                String publishedDateStr = volumeInfo.get("publishedDate").getAsString();
+                String descriptionStr = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "";
 
                 JsonObject imageLinks = volumeInfo.getAsJsonObject("imageLinks");
+                String smallThumbnailStr, thumbnailStr;
                 if (imageLinks != null) {
-                    book.smallThumbnail = imageLinks.get("smallThumbnail").getAsString();
-                    book.thumbnail = imageLinks.get("thumbnail").getAsString();
+                    smallThumbnailStr = imageLinks.get("smallThumbnail").getAsString();
+                    thumbnailStr = imageLinks.get("thumbnail").getAsString();
+                } else {
+                    smallThumbnailStr = "@drawable/image_not_found";
+                    thumbnailStr = "@drawable/image_not_found";
                 }
+
+                Book book = new Book(titleStr, authorsStr, publishedDateStr, descriptionStr, smallThumbnailStr, thumbnailStr);
 
                 bookArrayList.add(book);
             }
@@ -71,12 +89,12 @@ public class GoogleBooksApi {
     private void displayBooks(Context context, List<Book> books) {
         for (Book book : books) {
             // Display book information
-            String message = "Title: " + book.title + "\n" +
-                    "Authors: " + String.join(", ", book.authors) + "\n" +
-                    "Published Date: " + book.publishedDate + "\n" +
-                    "Description: " + book.description + "\n" +
-                    "Small Thumbnail: " + book.smallThumbnail + "\n" +
-                    "Thumbnail: " + book.thumbnail;
+            String message = "Title: " + book.getTitle() + "\n" +
+                    "Authors: " + String.join(", ", book.getAuthors()) + "\n" +
+                    "Published Date: " + book.getPublishedDate() + "\n" +
+                    "Description: " + book.getDescription() + "\n" +
+                    "Small Thumbnail: " + book.getSmallThumbnail() + "\n" +
+                    "Thumbnail: " + book.getThumbnail();
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
         }
     }

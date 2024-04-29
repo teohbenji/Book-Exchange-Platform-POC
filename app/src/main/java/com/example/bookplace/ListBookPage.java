@@ -25,7 +25,7 @@ public class ListBookPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GoogleBooksApi googleBooksApi = new GoogleBooksApi();
-                googleBooksApi.getData(getApplicationContext(), "Da Vinci code");
+                googleBooksApi.getData(getApplicationContext(), "Beautiful Creatures");
             }
         });
     }
