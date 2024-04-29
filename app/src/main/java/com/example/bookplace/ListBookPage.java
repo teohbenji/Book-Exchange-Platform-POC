@@ -1,18 +1,20 @@
 package com.example.bookplace;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
+import com.example.bookplace.Model.Book;
 import com.example.bookplace.Model.GoogleBooksApi;
+import com.example.bookplace.Model.GoogleBooksDataListener;
 
-public class ListBookPage extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class ListBookPage extends AppCompatActivity implements GoogleBooksDataListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_book_page);
@@ -22,13 +24,26 @@ public class ListBookPage extends AppCompatActivity {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Get data from GoogleBooksApi
                 GoogleBooksApi googleBooksApi = new GoogleBooksApi();
-                googleBooksApi.getData(getApplicationContext(), "Beautiful Creatures");
-
-                //RecylerView recyclerViewBooks = findViewById(R.id.recyclerViewBooks);
+                googleBooksApi.getGoogleBooksData(getApplicationContext(), "Harry Potter", ListBookPage.this);
             }
         });
     }
 
+    @Override
+    public void onBooksDataReceived(ArrayList<Book> books) {
+        // Handle received book data here
+        Log.d("ListBookPage", "Received books: " + books.size());
 
+        RecyclerView recyclerViewBooks = findViewById(R.id.recyclerViewBooks);
+
+        // Initialize adapter, and set vertical orientation
+        BookAdapter bookAdapter = new BookAdapter(ListBookPage.this, books);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ListBookPage.this, LinearLayoutManager.VERTICAL, false);
+
+        // Set layout manager and adapter to the recycler view
+        recyclerViewBooks.setLayoutManager(linearLayoutManager);
+        recyclerViewBooks.setAdapter(bookAdapter);
+    }
 }

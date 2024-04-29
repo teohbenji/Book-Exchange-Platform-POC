@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bookplace.Model.Book;
-import com.example.bookplace.R;
 import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
@@ -40,8 +39,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.textViewBookName.setText(book.getTitle());
         holder.textViewAuthorNames.setText(book.getAuthors());
         Glide.with(context).load(book.getSmallThumbnail()).into(holder.imageViewSmallThumbnail);
-        // You can set other attributes like image using Glide or Picasso here
-        // Example: Glide.with(context).load(book.getThumbnail()).into(holder.bookIV);
     }
 
     @Override

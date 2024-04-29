@@ -18,7 +18,7 @@ public class GoogleBooksApi {
     private String API_KEY = "AIzaSyBJDgOE6twnM9XnMYgpTpYbyMrZLidhNfI";
 
    // public void getData(Context context, String title, String author, String publisher) {
-    public void getData(Context context, String title) {
+    public void getGoogleBooksData(Context context, String title, final GoogleBooksDataListener googleBooksDataListener) {
 
         String searchTerms = "+intitle:" + title;
         String url = baseUrl + searchTerms + "&key=" + API_KEY;
@@ -28,26 +28,28 @@ public class GoogleBooksApi {
             @Override
             public void onSuccess(String response) {
                 // Handle successful response
-                List<Book> booksArrayList = parseBooksResponse(response);
-                displayBooks(context, booksArrayList);
+                googleBooksDataListener.onBooksDataReceived(parseBooksResponse(response));
             }
 
             @Override
             public void onError(String errorMessage) {
-                // Handle error
                 Log.e("NetworkRequestHandler", "Error: " + errorMessage);
+
+                String toastMessage = "HTTP Error: " + errorMessage;
+                Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show();
+                googleBooksDataListener.onBooksDataReceived(new ArrayList<>());
             }
         });
     }
 
-    private List<Book> parseBooksResponse(String response) {
-        List<Book> bookArrayList = new ArrayList<>();
+    private ArrayList<Book> parseBooksResponse(String response) {
+        ArrayList<Book> bookArrayList = new ArrayList<>();
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(response, JsonObject.class);
         if (jsonObject.has("items")) {
             JsonArray itemsArray = jsonObject.getAsJsonArray("items");
             for (JsonElement itemElement : itemsArray) {
-                if (bookArrayList.size() >= 1) break; // Limit to top result
+                if (bookArrayList.size() >= 5) break; // Limit to top 5 results
 
                 JsonObject volumeInfo = itemElement.getAsJsonObject().getAsJsonObject("volumeInfo");
 
@@ -86,16 +88,4 @@ public class GoogleBooksApi {
         return bookArrayList;
     }
 
-    private void displayBooks(Context context, List<Book> books) {
-        for (Book book : books) {
-            // Display book information
-            String message = "Title: " + book.getTitle() + "\n" +
-                    "Authors: " + String.join(", ", book.getAuthors()) + "\n" +
-                    "Published Date: " + book.getPublishedDate() + "\n" +
-                    "Description: " + book.getDescription() + "\n" +
-                    "Small Thumbnail: " + book.getSmallThumbnail() + "\n" +
-                    "Thumbnail: " + book.getThumbnail();
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-        }
-    }
 }

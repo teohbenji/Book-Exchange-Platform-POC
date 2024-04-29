@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="450dp"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:layout_below="@+id/buttonSearch"
     app:cardBackgroundColor="@color/white"
@@ -23,7 +23,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:contentDescription="@string/app_name"
             android:padding="5dp"/>
 
         <!-- Text View to display Book Name -->
@@ -34,7 +33,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/imageViewSmallThumbnail"
-            android:text="test"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -48,7 +46,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/imageViewSmallThumbnail"
-            android:drawablePadding="2dp"
-            android:text="test" />
+            android:drawablePadding="2dp"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

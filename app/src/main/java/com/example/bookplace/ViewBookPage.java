@@ -13,14 +13,6 @@ public class ViewBookPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_book_page);
 
-        Button buttonGetData = findViewById(R.id.buttonGetData);
 
-        buttonGetData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GoogleBooksApi googleBooksApi = new GoogleBooksApi();
-                googleBooksApi.getData(getApplicationContext(), "Da Vinci code");
-            }
-        });
     }
 }
