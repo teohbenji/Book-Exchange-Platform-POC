@@ -1,4 +1,4 @@
-package com.example.bookexchangeplatformpoc;
+package com.example.bookplace;
 
 import org.junit.Test;
 

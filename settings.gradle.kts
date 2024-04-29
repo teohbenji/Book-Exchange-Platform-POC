@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Book Exchange Platform POC"
+rootProject.name = "Book Place"
 include(":app")
  

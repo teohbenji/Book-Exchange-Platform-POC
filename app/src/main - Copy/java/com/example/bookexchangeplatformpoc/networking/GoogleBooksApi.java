@@ -1,4 +1,4 @@
-package com.example.bookexchangeplatformpoc.networking;
+package com.example.bookplace.networking;
 
 import java.net.URI;
 

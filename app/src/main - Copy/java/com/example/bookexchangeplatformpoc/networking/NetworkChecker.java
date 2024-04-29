@@ -1,6 +1,6 @@
 //code adapted from: https://www.youtube.com/watch?v=2g3lWHd1lQ8
 
-package com.example.bookexchangeplatformpoc.networking;
+package com.example.bookplace.networking;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;

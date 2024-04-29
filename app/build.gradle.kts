@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bookexchangeplatformpoc"
+    namespace = "com.example.bookplace"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bookexchangeplatformpoc"
+        applicationId = "com.example.bookplace"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

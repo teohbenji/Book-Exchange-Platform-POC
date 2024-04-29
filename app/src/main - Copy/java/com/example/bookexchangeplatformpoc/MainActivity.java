@@ -1,4 +1,4 @@
-package com.example.bookexchangeplatformpoc;
+package com.example.bookplace;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.bookexchangeplatformpoc.networking.NetworkChecker;
+import com.example.bookplace.networking.NetworkChecker;
 
 public class MainActivity extends AppCompatActivity {
     private NetworkChecker networkChecker;

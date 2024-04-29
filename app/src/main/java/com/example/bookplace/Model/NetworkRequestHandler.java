@@ -1,4 +1,4 @@
-package com.example.bookexchangeplatformpoc.Model;
+package com.example.bookplace.Model;
 
 import android.content.Context;
 
