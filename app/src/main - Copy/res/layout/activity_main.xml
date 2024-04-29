@@ -113,13 +113,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="While in Paris, Harvard symbologist Robert Langdon is awakened by a phone call in the dead of the night. The elderly curator of the Louvre has been murdered inside the museum, his body covered in baffling symbols. As Langdon and gifted French cryptologist Sophie Neveu sort through the bizarre riddles, they are stunned to discover a trail of clues hidden in the works of Leonardo da Vinci—clues visible for all to see and yet ingeniously disguised by the painter." />
-        <Button
-            android:id="@+id/buttonGetData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Data"
-            android:layout_centerInParent="true" />
-
     </LinearLayout>
 
 </LinearLayout>
